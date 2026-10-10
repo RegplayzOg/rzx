@@ -51,6 +51,11 @@ RZX updates itself: once installed, it checks this page for new releases and ins
 - Modrinth and CurseForge browsing, mod and modpack installs, and instance backups.
 - Microsoft sign-in, offline accounts and a 3D skin preview.
 - Worlds, servers, screenshots and logs per instance, with Discord Rich Presence.
+- Host your own Minecraft servers locally (Vanilla, Paper, Fabric, Forge, NeoForge or from a modpack) with a live console and mod/plugin installs.
+
+## Host your server online with Zenix
+
+Local servers stop when your PC does. For an always-on Minecraft server, check out **[Zenix Hosting](https://zenix.sg)**: https://zenix.sg
 
 ## Community
 
