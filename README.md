@@ -21,19 +21,27 @@ Grab the file for your system from the [latest release](https://github.com/Regpl
 | Linux | `.AppImage`, `.deb` or `.rpm` |
 | macOS | `.dmg` (Apple Silicon: `aarch64`, Intel: `x64`) |
 
-### Linux one-line install
+### One-line install
 
-Works on any x86_64 distro and needs no root. It installs the AppImage, adds an app-menu entry and an `rzx` command:
+**Windows** (PowerShell): downloads and runs the latest installer.
+
+```powershell
+irm https://raw.githubusercontent.com/RegplayzOg/rzx/main/install.ps1 | iex
+```
+
+**macOS and Linux** (Terminal): no root needed. On macOS it installs RZX into `~/Applications`; on Linux (any x86_64 distro) it installs the AppImage, an app-menu entry and an `rzx` command.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/RegplayzOg/rzx/main/install.sh | sh
 ```
 
-To remove it (your instances in `~/.rzx` are kept):
+To remove it on macOS or Linux (your instances in `~/.rzx` are kept):
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/RegplayzOg/rzx/main/install.sh | sh -s -- --uninstall
 ```
+
+On Windows, uninstall from Settings > Apps.
 
 RZX updates itself: once installed, it checks this page for new releases and installs them from inside the app.
 

@@ -1,9 +1,9 @@
 #!/bin/sh
-# RZX installer for Linux (x86_64, any distro).
+# RZX installer for Linux (x86_64, any distro) and macOS (Apple Silicon and Intel).
 #   curl -fsSL https://raw.githubusercontent.com/RegplayzOg/rzx/main/install.sh | sh
 #   sh install.sh --uninstall        remove RZX (your instances in ~/.rzx are kept)
 #   sh install.sh --version 0.1.11   install a specific version
-# Installs into your home folder (no root needed). RZX updates itself from inside the app.
+# Installs into your home folder (no root needed); on macOS into ~/Applications. RZX updates itself from inside the app.
 set -eu
 
 REPO="RegplayzOg/rzx"
@@ -24,6 +24,11 @@ fetch() { # fetch <url> <output>
 }
 
 uninstall() {
+  if [ "$(uname -s)" = "Darwin" ]; then
+    rm -rf "$HOME/Applications/RZX.app"
+    say "RZX removed. Your instances and settings in ~/.rzx were kept."
+    exit 0
+  fi
   rm -f "$BIN/rzx" "$DESKTOP"
   rm -rf "$DIR"
   command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$DATA/applications" 2>/dev/null || true
@@ -42,11 +47,14 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-[ "$(uname -s)" = "Linux" ] || die "this installer is for Linux"
-case "$(uname -m)" in
-  x86_64|amd64) ;;
-  *) die "only x86_64 builds are available (this machine is $(uname -m))" ;;
-esac
+OS="$(uname -s)"
+case "$OS" in Linux|Darwin) ;; *) die "this installer is for Linux and macOS (on Windows use install.ps1)" ;; esac
+if [ "$OS" = "Linux" ]; then
+  case "$(uname -m)" in
+    x86_64|amd64) ;;
+    *) die "only x86_64 builds are available (this machine is $(uname -m))" ;;
+  esac
+fi
 
 if [ -z "$VERSION" ]; then
   say "Looking up the latest version..."
@@ -57,6 +65,23 @@ if [ -z "$VERSION" ]; then
   fi
   VERSION="${final##*/v}"
   case "$VERSION" in ""|*/*|*" "*) die "could not work out the latest version" ;; esac
+fi
+
+if [ "$OS" = "Darwin" ]; then
+  case "$(uname -m)" in arm64) ARCH=aarch64 ;; *) ARCH=x64 ;; esac
+  URL="https://github.com/$REPO/releases/download/v$VERSION/RZX_$ARCH.app.tar.gz"
+  say "Downloading RZX $VERSION..."
+  work="$(mktemp -d)"
+  trap 'rm -rf "$work"' EXIT
+  fetch "$URL" "$work/rzx.tar.gz" || die "download failed ($URL)"
+  tar -xzf "$work/rzx.tar.gz" -C "$work"
+  [ -d "$work/RZX.app" ] || die "the download did not contain RZX.app"
+  mkdir -p "$HOME/Applications"
+  rm -rf "$HOME/Applications/RZX.app"
+  mv "$work/RZX.app" "$HOME/Applications/RZX.app"
+  xattr -dr com.apple.quarantine "$HOME/Applications/RZX.app" 2>/dev/null || true
+  say "RZX $VERSION installed in ~/Applications. Open it from Launchpad or Spotlight."
+  exit 0
 fi
 
 URL="https://github.com/$REPO/releases/download/v$VERSION/RZX_${VERSION}_amd64.AppImage"
