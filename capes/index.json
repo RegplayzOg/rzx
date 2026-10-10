@@ -1,0 +1,14 @@
+{
+  "capes": [
+    {
+      "id": "rzx-teal",
+      "name": "Rzx Teal",
+      "file": "rzx-teal.png"
+    },
+    {
+      "id": "rzx-violet",
+      "name": "Rzx Violet",
+      "file": "rzx-violet.png"
+    }
+  ]
+}
