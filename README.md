@@ -7,6 +7,7 @@
 **A fast, modern Minecraft launcher.**
 
 [**Download the latest release**](https://github.com/RegplayzOg/rzx/releases/latest)
+&nbsp;·&nbsp; [**Join our Discord**](https://discord.gg/Z6KumTCFY)
 
 </div>
 
@@ -28,6 +29,10 @@ RZX updates itself: once installed, it checks this page for new releases and ins
 - Modrinth and CurseForge browsing, mod and modpack installs, and instance backups.
 - Microsoft sign-in, offline accounts and a 3D skin preview.
 - Worlds, servers, screenshots and logs per instance, with Discord Rich Presence.
+
+## Community
+
+Questions, bug reports, feedback or just want to chat? Join the official RZX Discord: **https://discord.gg/Z6KumTCFY**
 
 ## About
 
