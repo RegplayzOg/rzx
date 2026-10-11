@@ -11,7 +11,7 @@
 
 </div>
 
-Current version: **0.2.1** (2026-10-11). Windows, Linux and macOS.
+Current version: **0.2.2** (2026-10-11). Windows, Linux and macOS.
 
 ## Download
 
@@ -78,6 +78,11 @@ You do not need to install Java: RZX downloads the right Java runtime for each M
 - English UI with translation tables ready for more languages (partial German sample included).
 
 ## What's new
+
+### 0.2.2 - 2026-10-11
+
+- Fixed: the three-dots menu on a server card was hidden behind the Zenix banner; menus now always draw on top.
+- Faster releases: installers build from a warm cache and the release no longer repeats checks CI already ran.
 
 ### 0.2.1 - 2026-10-11
 
