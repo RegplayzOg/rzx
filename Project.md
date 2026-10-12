@@ -11,7 +11,7 @@
 
 </div>
 
-Current version: **0.2.2** (2026-10-11). Windows, Linux and macOS.
+Current version: **0.2.3** (2026-10-13). Windows, Linux and macOS.
 
 ## Download
 
@@ -78,6 +78,11 @@ You do not need to install Java: RZX downloads the right Java runtime for each M
 - English UI with translation tables ready for more languages (partial German sample included).
 
 ## What's new
+
+### 0.2.3 - 2026-10-13
+
+- Fixed: on macOS the launcher could not start the Java it downloads, so launching failed on every Mac.
+- Fixed: on Apple Silicon, Minecraft 1.17 and older now get a Java runtime (the Intel one runs through Rosetta).
 
 ### 0.2.2 - 2026-10-11
 
