@@ -93,7 +93,7 @@ You do not need to install Java: RZX downloads the right Java runtime for each M
 
 - Server modpacks now leave out every client-side mod automatically: mods Modrinth marks client-side, mods that say so in their own metadata (menus, maps, recipe viewers), mods bundled in the pack's overrides folder, and libraries only those mods needed. A "Show list" button after the install shows what was left out and why.
 - Fixed: the three-dots menu on a server's page was cut off by the sidebar.
-- Release notes and documentation moved into a single Project.md.
+- Release notes and documentation moved into this README.
 
 ### 0.2.0 - 2026-10-11
 
